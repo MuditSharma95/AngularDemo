@@ -1,0 +1,9 @@
+thead {
+  background-color: #1b6ec2;
+  color: #fff;
+  border-color: #1861ac;
+}
+.panel-heading {
+  background-color: #1b6ec2;
+  padding:5px;
+}

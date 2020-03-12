@@ -1,0 +1,23 @@
+[
+  {
+    "ProductId": "1",
+    "ProductName": "Mobile",
+    "Model": "Samsun Galaxy Y",
+    "Image": "assets/Images/mobile.jpg",
+    "Rating": 3.5
+  },
+  {
+    "ProductId": "2",
+    "ProductName": "Laptop",
+    "Model": "Mac air",
+    "Image": "assets/Images/laptop.jpg",
+    "Rating": 3
+  },
+  {
+    "ProductId": "3",
+    "ProductName": "Headphones",
+    "Model": "Sony WIC400",
+    "Image": "assets/Images/headphone.jpg",
+    "Rating": 4
+  }
+]

@@ -1,0 +1,40 @@
+<h1>{{modalHeader}} </h1>
+
+<p *ngIf="!products"><em>Loading...</em></p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-default panel-shadow">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <input type="search" [(ngModel)]="searchText" placeholder="Search.." class="form-control col-md-3">
+        </div>
+        <div class="panel-options">
+          <a href="#" data-rel="collapse"><i class="entypo-down-open"></i></a>
+        </div>
+      </div>
+      <div class="panel-body">
+
+        <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="products">
+          <thead>
+            <tr>
+              <th>Product Image </th>
+              <th>ProductName</th>
+              <th>Model No   </th>
+              <th>Rating</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products | Customfilter : searchText">
+              <td><img [src]="product.image" [title]="product.productName" style="width:50px;margin:2px" /></td>
+              <td>{{ product.productName }}</td>
+              <td>{{ product.model }}</td>
+              <td><app-star [rating]="product.rating" (ratingClicked)="rating($event)" ></app-star></td>
+              <td><button class="btn-primary form-control" [routerLink]="['/product-detail',product.productId]">View</button>   </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
