@@ -1,0 +1,48 @@
+<div class='card'>
+  <div class='card-header'>
+    Add Products
+  </div>
+  <div class='card-body'>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div formGroupName="productForm" class='row'>
+        <div class='col-md-8'>
+          <div class='row'>
+            <div class='col-md-4'>Product Name</div>
+            <div class='col-md-8'>
+              <input type="text" class="form-control" name="productname" formControlName="productName">
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'>Model</div>
+            <div class='col-md-8'>
+              <input type="email" class="form-control" name="model" formControlName="model">
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'> Star Rating:</div>
+            <div class='col-md-8'>
+              <input type="number" class="form-control" min="0" max="5" name="rating" formControlName="rating">
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-md-4'></div>
+            <div class='col-md-5 form-inline' >
+              <input class="form-control btn-primary col-md-3" [disabled]="!contactForm.valid" type="submit" >
+              <input class="form-control btn-secondary col-md-3" [disabled]="!contactForm.valid" (click)="onReset()" value="Reset" >
+              <p>form valid :- {{contactForm.valid}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class='card-footer'>
+    <button class='btn btn-outline-secondary'
+            [routerLink]="['/product-list']"
+            style='width:80px'>
+      <i class='fa fa-chevron-left'></i> Back
+    </button>
+  </div>
+</div>
+

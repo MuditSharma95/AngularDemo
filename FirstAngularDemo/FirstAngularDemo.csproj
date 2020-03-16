@@ -65,6 +65,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\api\" />
     <Folder Include="ClientApp\src\assets\Images\" />
   </ItemGroup>
 

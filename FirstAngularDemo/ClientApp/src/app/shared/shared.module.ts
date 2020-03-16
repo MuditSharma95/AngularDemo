@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StarComponent } from './star.component';
 import { FilterPipe } from '../filter.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
     StarComponent,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     FilterPipe
   ]
 })

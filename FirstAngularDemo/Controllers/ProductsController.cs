@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FirstAngularDemo.Model;
+﻿using FirstAngularDemo.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
+using System.Linq;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,9 +15,39 @@ namespace FirstAngularDemo.Controllers
         // GET: /<controller>/
         private readonly ILogger<ProductsController> _logger;
 
+        private static List<Product> mainProducts = new List<Product>();
+
         public ProductsController(ILogger<ProductsController> logger)
         {
             _logger = logger;
+            mainProducts= new List<Product>()
+                {
+                    new Product()
+                     {
+                           ProductId =  1 ,
+                           productName =  "Mobile ",
+                           model =  "Samsun Galaxy Y" ,
+                           Image ="assets/Images/mobile.jpg ",
+                           rating=1.5m,
+                        },
+                    new Product()
+                        {
+                           ProductId =  2 ,
+                           productName =  "Laptop ",
+                           model =  "Mac air ",
+                           Image = "assets/Images/laptop.jpg" ,
+                           rating=3.5m,
+                        },
+                    new Product()
+                        {
+                           ProductId =  3 ,
+                           productName =  "Headphones" ,
+                           model =  "Sony WIC400" ,
+                           Image =  "assets/Images/headphone.jpg" ,
+                           rating=5m,
+                        }
+            };
+
         }
 
         [HttpGet]
@@ -31,38 +59,21 @@ namespace FirstAngularDemo.Controllers
         [HttpGet]
         public Product GetById(int id)
         {
-            return ProductListData().Where(x => x.ProductId == Convert.ToString(id)).FirstOrDefault();
+            return ProductListData().Where(x => x.ProductId == id).FirstOrDefault();
         }
+
+        [HttpPost]
+        public bool AddProduct(Product product)
+        {
+            product.ProductId = mainProducts.Count();
+            product.Image = "assets/Images/mobile.jpg ";
+            mainProducts.Add(product);
+            return true;
+        }
+
         public static List<Product> ProductListData()
         {
-            List<Product> listProducts = new List<Product>()
-                {
-                    new Product()
-                     {
-                           ProductId =  "1" ,
-                           ProductName =  "Mobile ",
-                           Model =  "Samsun Galaxy Y" ,
-                           Image =" assets/Images/mobile.jpg ",
-                           Rating=1.5m,
-                        },
-                    new Product()
-                        {
-                           ProductId =  "2" ,
-                           ProductName =  "Laptop ",
-                           Model =  "Mac air ",
-                           Image = "assets/Images/laptop.jpg" ,
-                           Rating=3.5m,
-                        },
-                    new Product()
-                        {
-                           ProductId =  "3" ,
-                           ProductName =  "Headphones" ,
-                           Model =  "Sony WIC400" ,
-                           Image =  "assets/Images/headphone.jpg" ,
-                           Rating=5m,
-                        }
-            };
-            return listProducts;
+            return mainProducts;
         }
     }
 }

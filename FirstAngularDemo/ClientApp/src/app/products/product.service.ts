@@ -2,7 +2,8 @@ import { Injectable, Inject } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http'
 import { Observable, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators"
-import { IProducts } from "./product";
+import { FormGroup } from "@angular/forms";
+import { ProductModel } from "./product";
 
 @Injectable({
   providedIn:'root'
@@ -14,11 +15,23 @@ export class ProductService {
     this._baseUrl = baseUrl;
   }
 
-  getProducts(): Observable<IProducts[]> {
-    return this.http.get<IProducts[]>(this._baseUrl +'products/Get');;
+  getProducts(): Observable<ProductModel[]> {
+    return this.http.get<ProductModel[]>(this._baseUrl +'products/Get');;
   }
-  getProductsById(id:string): Observable<IProducts> {
-    return this.http.get<IProducts>(this._baseUrl + 'products/GetById/?id='+id);
+
+  addProduct(contactForm: ProductModel): void {
+    this.http.post<any>(this._baseUrl + 'products/AddProduct', contactForm).subscribe(
+      (res) => console.log(res),
+      (err) => console.log(err)
+    );
+  }
+  //getProducts(): Observable<IProducts[]> {
+  //  return this.http.get<IProducts[]>('/assets/products.json');
+  //}
+
+
+  getProductsById(id:string): Observable<ProductModel> {
+    return this.http.get<ProductModel>(this._baseUrl + 'products/GetById/?id='+id);
   }
 
   //getProducts(): Observable<IProducts[]>{

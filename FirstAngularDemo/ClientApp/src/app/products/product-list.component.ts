@@ -1,8 +1,7 @@
 
 import { Component, OnInit, Inject } from '@angular/core';
-import { IProducts } from './product';
 import { ProductService } from './product.service';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { ProductModel } from './product';
 
 
 @Component({
@@ -14,7 +13,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 export class ProductListComponent implements OnInit {
   modalHeader: string = "Product List";
   // _listFilter: string;
-  products: IProducts[];
+  products: ProductModel[];
 
   constructor(private _productService: ProductService) {
 

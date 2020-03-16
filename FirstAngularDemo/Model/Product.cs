@@ -7,10 +7,10 @@ namespace FirstAngularDemo.Model
 {
     public class Product
     {
-            public string ProductId { get; set; }
-            public string ProductName { get; set; }
-            public string Model{ get; set; }
+            public int ProductId { get; set; }
+            public string productName { get; set; }
+            public string model { get; set; }
             public string Image{ get; set; }
-            public decimal Rating{ get; set; }
+            public decimal rating { get; set; }
     }
 }
